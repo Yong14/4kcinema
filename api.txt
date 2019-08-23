@@ -1,12 +1,16 @@
-正在热映:
+姝ｅ湪鐑槧:
 	http://39.97.33.178/api/movieOnInfoList?cityId=10
-即将上映:
+鍗冲皢涓婃槧:
 	http://39.97.33.178/api/movieComingList?cityId=10
-搜索：
+鎼滅储
 	http://39.97.33.178/api/searchList?cityId=10&kw=a
-城市：
+鍩庡競
 	http://39.97.33.178/api/cityList
-电影详情：
+鐢靛奖璇︽儏
 	http://39.97.33.178/api/detailmovie?movieId=345808
-影院：
+褰遍櫌
 	http://39.97.33.178/api/cinemaList?cityId=10
+鍩庡競瀹氫綅
+	http://39.97.33.178/api/getLocation
+
+鍥剧墖URl:	w.h =>128.180
