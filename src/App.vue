@@ -97,6 +97,8 @@ export default {
         let res2 = await this.$http("/api/cityList");
         res2 = res2.data.data.cities;
         this.resetCitys(res2);
+        //数据加载完毕跳转到指定页面
+        this.$router.push('/newplay');
       } catch (e) {
         console.error(e);
       }

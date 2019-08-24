@@ -5,12 +5,12 @@
         <!-- 高度175 -->
         <h3 class="h3">热门城市</h3>
         <ul>
-          <li @click="locationClick(item.nm)" v-for="item in hotCity" :key="item.id">{{item.nm}}</li>
+          <li @click="locationClick(item.nm,item.id)" v-for="item in hotCity" :key="item.id">{{item.nm}}</li>
         </ul>
       </div>
       <div ref="cityList" class="cityList" v-for="(item,index) in cityList" :key="index">
         <h3 class="h3" ref="h3">{{item.index}}</h3>
-        <p @click="locationClick(data.nm)" v-for="data in item.list" :key="data.id">{{data.nm}}</p>
+        <p @click="locationClick(data.nm,data.id)" v-for="data in item.list" :key="data.id">{{data.nm}}</p>
       </div>
     </div>
     <div class="chose">
@@ -41,8 +41,10 @@ export default {
     click(index) {
       this.location.scrollTo(0,-this.scrollHeight[index],100)
     },
-    locationClick(nm) {
-      this.$emit("locationClick", nm);
+    locationClick(nm,id) {
+      window.localStorage.setItem('nowNm',nm);
+      window.localStorage.setItem('nowId',id);
+      this.$emit("locationClick",nm,id);
     },
     //初始化ScrollHeight
     setScrollHeight() {

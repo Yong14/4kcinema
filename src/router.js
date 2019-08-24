@@ -12,25 +12,25 @@ export default new Router({
       path: '/',
       name: 'movie',
       component: Movie,
-      children:[
+      children: [
         {
-          path:'location',
-          name:'location',
+          path: 'location',
+          name: 'location',
           component: () => import('./views/Location.vue')
         },
         {
-          path:'newplay',
-          name:'newplay',
+          path: 'newplay',
+          name: 'newplay',
           component: () => import('./views/Newplay.vue')
         },
         {
-          path:'comingsoon',
-          name:'comingsoon',
+          path: 'comingsoon',
+          name: 'comingsoon',
           component: () => import('./views/Comingsoon.vue')
         },
         {
-          path:'search',
-          name:'search',
+          path: 'search',
+          name: 'search',
           component: () => import('./views/Search.vue')
         },
       ]

@@ -2,7 +2,7 @@
   <div class="divmovie">
     <header class="header">
       <ul>
-        <router-link tag="li" to="location">{{location}}</router-link>
+        <router-link tag="li" to="location">{{$store.state.nm}}</router-link>
         <router-link tag="li" class="newPlay" to="newplay">正在热映</router-link>
         <router-link tag="li" class="comingSoon" to="comingsoon">即将上映</router-link>
         <router-link tag="li" to="search">
@@ -17,12 +17,13 @@
 <script>
 export default {
   data:()=>({
-    location:'定位',
   }), 
   props:['newPalyData','comingsoon','cityList','hotCity'],
   methods:{
-    locationClick(nm){
-      this.location = nm;
+    locationClick(nm,id){
+      this.$store.state.nm = nm;
+      this.$store.state.id = id;
+      this.$router.push('/newplay');
     }
   }
 };
