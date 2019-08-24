@@ -1,6 +1,6 @@
 <template>
   <ul>
-    <li v-for="item in data" :key="item.id">
+    <li @click="showMovie(item.id)" v-for="item in data" :key="item.id">
       <img :src="item.img | setWH('128.180')" alt />
       <div class="content">
         <h3 class="movieName">{{item.nm}}</h3>
@@ -12,7 +12,7 @@
           <span>{{item.wish}}人想看</span>
         </p>
         <p class="protagonist">
-          <span>主演</span>
+          <span>主演：</span>
           <span>{{item.star}}</span>
         </p>
         <span class="newData">{{item.showInfo}}</span>
@@ -33,6 +33,12 @@ export default {
   props: ["data"],
   data() {
     return {};
+  },
+  methods:{
+    showMovie(id){
+      this.$store.state.movieId = id
+      this.$router.push('/particulars');
+    }
   }
 };
 </script>

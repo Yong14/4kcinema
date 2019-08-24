@@ -1,17 +1,12 @@
 <template>
   <div id="app" class="app">
     <header class="header">{{title}}</header>
-    <keep-alive>
-      <router-view
-        :newPalyData="newPalyData"
-        :comingsoon="comingsoon"
-        :hotCity="hotCity"
-        :cityList="cityList"
-      />
-    </keep-alive>
+    <!-- <keep-alive> -->
+    <router-view :hotCity="hotCity" :cityList="cityList" />
+    <!-- </keep-alive> -->
     <footer class="footer">
       <ul>
-        <router-link to="/" tag="li">
+        <router-link to="/newplay" tag="li">
           <span @click="titleClick('热映电影')">电影</span>
         </router-link>
         <router-link to="/cinema" tag="li">
@@ -26,12 +21,11 @@
 </template>
 
 <script>
+import { msgBox } from "@/components/jsView";
 export default {
   data() {
     return {
       title: "热映电影",
-      newPalyData: {},
-      comingsoon: [],
       cityList: [], //[{index:'A',list:[nm:'安山',id:'0']}]
       hotCity: []
     };
@@ -85,20 +79,12 @@ export default {
     },
     async getNewPlay() {
       try {
-        //请求正在热映的数据
-        let res = await this.$http('/api/movieOnInfoList?cityId=10');
-        res = res.data;
-        this.newPalyData = res;
-        // 请求即将上映的数据
-        let res1 = await this.$http("/api/movieComingList?cityId=10");
-        res1 = res1.data.data.comingList;
-        this.comingsoon = res1;
         // 请求城市数据
         let res2 = await this.$http("/api/cityList");
         res2 = res2.data.data.cities;
         this.resetCitys(res2);
         //数据加载完毕跳转到指定页面
-        this.$router.push('/newplay');
+        this.$router.push("/newplay");
       } catch (e) {
         console.error(e);
       }
@@ -106,6 +92,24 @@ export default {
   },
   mounted() {
     this.getNewPlay();
+    let location = this.$http("/api/getLocation").then(location => {
+      location = location.data.data;
+      if (location.id != this.$store.state.id) {
+        msgBox({
+          title: "是否切换为当前城市",
+          address: "广州",
+          change: "切换",
+          cancel: "取消",
+          handleCancel: null,
+          handleChange: () => {
+            this.$store.state.nm = location.nm;
+            this.$store.state.id = location.id;
+            window.localStorage.setItem("nowNm", location.nm);
+            window.localStorage.setItem("nowId", location.id);
+          }
+        });
+      }
+    });
   }
 };
 </script>

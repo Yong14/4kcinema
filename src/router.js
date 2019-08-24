@@ -46,6 +46,11 @@ export default new Router({
       component: () => import('./views/Mine.vue')
     },
     {
+      path: '/particulars',
+      name: 'particulars',
+      component: ()=> import('./views/Particulars.vue')
+    },
+    {
       path: '/*',
       redirect: '/'
     }

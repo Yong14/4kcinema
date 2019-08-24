@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     async getData() {
-      let res = await this.$http("/api/cinemaList?cityId=10");
+      let res = await this.$http("/api/cinemaList?cityId="+this.$store.state.id);
       res = res.data.data.cinemas;
       this.cinemas = res;
       this.$nextTick(() => {
@@ -90,6 +90,9 @@ export default {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  ul{
+    padding-bottom: 50px;
+  }
 }
 .li-item {
   margin-bottom: 10px;

@@ -2,7 +2,7 @@
   <div class="divmovie">
     <header class="header">
       <ul>
-        <router-link tag="li" to="location">{{$store.state.nm}}</router-link>
+        <router-link tag="li" class="address" to="location">{{$store.state.nm}}</router-link>
         <router-link tag="li" class="newPlay" to="newplay">正在热映</router-link>
         <router-link tag="li" class="comingSoon" to="comingsoon">即将上映</router-link>
         <router-link tag="li" to="search">
@@ -10,7 +10,7 @@
         </router-link>
       </ul>
     </header>
-    <router-view @locationClick="locationClick" :hotCity='hotCity' :cityList="cityList" :newPalyData="newPalyData" :comingsoon="comingsoon" class="router-view"></router-view>
+    <router-view @locationClick="locationClick" :hotCity='hotCity' :cityList="cityList" class="router-view"></router-view>
   </div>
 </template>
 
@@ -57,6 +57,9 @@ export default {
       height: 100%;
       line-height: 46px;
       text-align: center;
+    }
+    li.address{
+      font-size: $lg-font;
     }
     li.newPlay,
     li.comingSoon {

@@ -8,7 +8,9 @@ import VueAxios from 'vue-axios'
 Vue.use(VueAxios, axios);
 
 Vue.filter('setWH',(url,arg)=>{
-  return url.replace(/w\.h/,arg);
+  if(url){
+    return url.replace(/w\.h/,arg);
+  }
 })
 
 Vue.config.productionTip = false
