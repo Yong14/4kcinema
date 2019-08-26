@@ -34,10 +34,10 @@ export default {
   data() {
     return {};
   },
-  methods:{
-    showMovie(id){
-      this.$store.state.movieId = id
-      this.$router.push('/particulars');
+  methods: {
+    showMovie(id) {
+      this.$store.state.movieId = id;
+      this.$router.push("/particulars");
     }
   }
 };
@@ -90,14 +90,18 @@ li {
       display: flex;
       border: 1px solid #70b1d3;
       border-radius: 2px;
-      font-size: 5px;
+      font-size: 8px;
       .icon-3d {
         width: 18px;
+        height: 12px;
+        line-height: 12px;
         text-align: center;
         background: #70b1d3;
         color: #eff6fa;
       }
       .icon-imax {
+        height: 13px;
+        line-height: 13px;
         width: 32px;
         color: #70b1d3;
         text-align: center;
@@ -113,7 +117,7 @@ li {
       background: #f03d37;
       color: #e6e6e6;
       border-radius: 3px;
-      &.presll{
+      &.presll {
         background: $mianColor;
       }
     }

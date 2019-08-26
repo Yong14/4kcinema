@@ -97,11 +97,11 @@ export default {
       if (location.id != this.$store.state.id) {
         msgBox({
           title: "是否切换为当前城市",
-          address: "广州",
+          address: location.nm,
           change: "切换",
           cancel: "取消",
           handleCancel: null,
-          handleChange: () => {
+          handleChange: ()=>{
             this.$store.state.nm = location.nm;
             this.$store.state.id = location.id;
             window.localStorage.setItem("nowNm", location.nm);

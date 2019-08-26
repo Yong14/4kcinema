@@ -7,7 +7,7 @@
 城市
 	http://39.97.33.178/api/cityList
 电影详情
-	http://39.97.33.178/api/detailmovie?movieId=345808
+	http://39.97.33.178/api/detailmovie?movieId=1215605
 影院
 	http://39.97.33.178/api/cinemaList?cityId=10
 城市定位

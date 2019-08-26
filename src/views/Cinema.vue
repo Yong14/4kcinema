@@ -145,10 +145,12 @@ export default {
   }
   .tag {
     .tag-item {
+      min-width: 15px;
       display: inline-block;
-      font-size: 5px;
+      font-size: 10px;
       height: 15px;
       line-height: 14px;
+      text-align: center;
       border: 1px solid #000;
       margin-right: 5px;
       &.or {
@@ -156,8 +158,8 @@ export default {
         color: $mianColor;
       }
       &.br {
-        border-color: rgb(238, 212, 98);
-        color: rgb(243, 215, 91);
+        border-color: rgb(250, 121, 0);
+        color: rgb(250, 121, 0);
       }
     }
   }
