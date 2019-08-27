@@ -1,14 +1,12 @@
 <template>
-  <div class="cover">
-    <div class="msg">
+    <div class="msg" :key="title">
       <h3>{{title}}</h3>
       <p>{{address}}</p>
       <div class="btn">
-        <div @touchend="handleChange" class="change">{{change}}</div>
-        <div @touchend="handleCancel" class="cancel">{{cancel}}</div>
+        <div @touchend.stop="handleChange" class="change">{{change}}</div>
+        <div @touchend.stop="handleCancel" class="cancel">{{cancel}}</div>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -16,15 +14,6 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-.cover {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(204, 204, 204, 0.664);
-  backdrop-filter: blur(5px);
-}
 .msg {
   width: 200px;
   height: 100px;

@@ -1,6 +1,5 @@
 <template>
   <div id="app" class="app">
-    <header class="header">{{title}}</header>
     <!-- <keep-alive> -->
     <router-view :hotCity="hotCity" :cityList="cityList" />
     <!-- </keep-alive> -->
@@ -15,6 +14,9 @@
         <router-link to="/mine" tag="li">
           <span @click="titleClick('个人')">个人</span>
         </router-link>
+        <li>
+          <span @click="goRouter">&lt;</span>
+        </li>
       </ul>
     </footer>
   </div>
@@ -88,6 +90,10 @@ export default {
       } catch (e) {
         console.error(e);
       }
+    },
+    //退回上一步路由
+    goRouter(){
+      this.$router.go(-1);
     }
   },
   mounted() {
@@ -101,7 +107,7 @@ export default {
           change: "切换",
           cancel: "取消",
           handleCancel: null,
-          handleChange: ()=>{
+          handleChange: () => {
             this.$store.state.nm = location.nm;
             this.$store.state.id = location.id;
             window.localStorage.setItem("nowNm", location.nm);
@@ -121,6 +127,8 @@ export default {
   display: flex;
   flex-direction: column;
   position: relative;
+  font-size: $lg-font;
+  background: #fafafa;
 }
 .header {
   width: 100%;
@@ -136,19 +144,24 @@ export default {
   height: 50px;
   left: 0;
   bottom: 0;
-  background: $mianColor;
+  background: #fafafa;
   ul {
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: space-around;
+    padding: 10px 0;
     li {
-      height: 50px;
-      line-height: 50px;
+      width: 60px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      border-radius: 10px;
       color: $mianFontColor;
+      border: 1px solid rgba(212, 206, 206, 0.582);
     }
     .router-link-exact-active {
-      color: rgb(51, 107, 226);
+      color: $mianColor;
     }
   }
 }
