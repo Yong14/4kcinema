@@ -15,14 +15,13 @@
 </template>
 
 <script>
-export default {
+export default { 
   data:()=>({
   }), 
   props:['newPalyData','comingsoon','cityList','hotCity'],
   methods:{
     locationClick(nm,id){
-      this.$store.state.nm = nm;
-      this.$store.state.id = id;
+      this.$store.commit('setNmAndId',{nm,id});
       this.$router.push('/newplay');
     }
   }

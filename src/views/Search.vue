@@ -26,11 +26,13 @@ export default {
   methods: {
     click() {
       var full = pinyin.getFullChars(this.msg);
-      this.axios.get("/api/searchList?cityId="+this.$store.state.id+"&kw=" + full).then(res => {
-        if (res.data.data.movies) {
-          this.movieList = res.data.data.movies.list;
-        }
-      });
+      this.axios
+        .get("/api/searchList?cityId=" + this.$store.state.id + "&kw=" + full)
+        .then(res => {
+          if (res.data.data.movies) {
+            this.movieList = res.data.data.movies.list;
+          }
+        });
       this.initBScroll();
     },
     //初始化滚动BScroll
@@ -38,7 +40,7 @@ export default {
       if (this.movieShow) {
         this.movieShow.refresh();
       } else {
-        this.movieShow = new BScroll(this.$refs.movieShow,{
+        this.movieShow = new BScroll(this.$refs.movieShow, {
           click: true
         });
       }
@@ -51,7 +53,7 @@ export default {
 .serch {
   display: flex;
 }
-.movieShow{
+.movieShow {
   height: 90%;
   overflow: hidden;
 }

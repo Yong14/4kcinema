@@ -41,9 +41,9 @@ export default new Router({
       component: () => import('./views/Cinema.vue')
     },
     {
-      path: '/mine',
-      name: 'mine',
-      component: () => import('./views/Mine.vue')
+      path: '/login',
+      name: 'login',
+      component: () => import('./views/Login.vue')
     },
     {
       path: '/particulars',
@@ -54,6 +54,11 @@ export default new Router({
       path:'/register',
       name:'register',
       component: ()=>import('./views/Register.vue')
+    },
+    {
+      path:'/mine',
+      name:'mine',
+      component: ()=>import('./views/Mine.vue')
     },
     {
       path: '/*',
