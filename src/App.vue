@@ -8,9 +8,6 @@
         <router-link to="/newplay" tag="li">
           <span @click="titleClick('热映电影')">电影</span>
         </router-link>
-        <router-link to="/cinema" tag="li">
-          <span @click="titleClick('4K影院')">影院</span>
-        </router-link>
         <router-link to="/mine" tag="li">
           <span @click="titleClick('个人')">个人</span>
         </router-link>

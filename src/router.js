@@ -36,7 +36,7 @@ export default new Router({
       ]
     },
     {
-      path: '/cinema',
+      path: '/cinema/:id',
       name: 'cinema',
       component: () => import('./views/Cinema.vue')
     },
@@ -59,6 +59,11 @@ export default new Router({
       path:'/mine',
       name:'mine',
       component: ()=>import('./views/Mine.vue')
+    },
+    {
+      path:'/buytickit',
+      name:'buytickit',
+      component: ()=>import('./views/BuyTickit.vue')
     },
     {
       path: '/*',

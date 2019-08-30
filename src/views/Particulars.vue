@@ -1,22 +1,7 @@
 <template>
   <div class="Partcular" ref="Partcular">
     <div class="box">
-      <div class="headers">
-        <img :src="data.img | setWH('100.180')" alt />
-        <div class="header-desc">
-          <h3>{{data.nm}}</h3>
-          <p class="dir">导演：{{data.dir}}</p>
-          <span>{{data.src}} / {{data.oriLang}} / {{data.cat}} / 片长{{data.dur}}分钟</span>
-          <div class="wish">
-            <div>
-              <span class="icon-favorite"></span>想看
-            </div>
-            <div>
-              <span class="icon-keyboard_arrow_right"></span>看过
-            </div>
-          </div>
-        </div>
-      </div>
+      <particurlarHeader :data="data"/>
 
       <div class="grade">
         <h3>{{data.scoreLabel}}</h3>
@@ -58,11 +43,15 @@
 
 <script>
 import BScroll from "better-scroll";
+import particurlarHeader from "../components/ParticularHeader"
 export default {
   data() {
     return {
       data: {}
     };
+  },
+  components:{
+    particurlarHeader
   },
   computed: {
     fiveStar() {

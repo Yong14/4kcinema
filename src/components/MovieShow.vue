@@ -1,8 +1,8 @@
 <template>
   <ul>
-    <li @click="showMovie(item.id)" v-for="item in data" :key="item.id">
-      <img :src="item.img | setWH('128.180')" alt />
-      <div class="content">
+    <li v-for="item in data" :key="item.id">
+      <img @click="showMovie(item.id)" :src="item.img | setWH('128.180')" alt />
+      <div @click="showMovie(item.id)" class="content">
         <h3 class="movieName">{{item.nm}}</h3>
         <p class="grade" v-if="item.sc!='0'">
           <span>观众评</span>
@@ -22,7 +22,7 @@
           <div class="icon-3d">3D</div>
           <div class="icon-imax">IMAX</div>
         </div>
-        <div :class="['buy',{presll:item.sc=='0'}]">{{item.sc=='0'?'预售':'购买'}}</div>
+        <div @click="shop(item.id)" :class="['buy',{presll:item.sc=='0'}]">{{item.sc=='0'?'预售':'购买'}}</div>
       </div>
     </li>
   </ul>
@@ -38,6 +38,9 @@ export default {
     showMovie(id) {
       this.$store.state.movieId = id;
       this.$router.push("/particulars");
+    },
+    shop(id){
+      this.$router.push('/cinema/'+id);
     }
   }
 };

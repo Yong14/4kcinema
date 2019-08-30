@@ -53,7 +53,7 @@ export default {
         if (data[i].userName == this.acount) {
           if (data[i].password == this.password) {
             this.$store.commit('login',this.acount);
-            this.$router.replace('/mine');
+            this.$router.go(-1);
             return;
           } else {
             this.msg = "密码有误";
