@@ -13,13 +13,28 @@
         <span class="icon-check_circle"></span>3D眼镜需自备或到影院购买
       </span>
     </div>
-
+    <!-- 座位 -->
     <div class="cinema">
       <div class="item" ref="cinema">
         <div class="cinema-item" v-for="(item,index) in cinema" :key="index">
-          <span :class="{on:i==1,off:i==2}" v-for="(i,j) in item" :key="j"></span>
+          <span
+            @click="chose(index,j,i)"
+            :class="{on:i==1,off:i==2,chose:i==3}"
+            v-for="(i,j) in item"
+            :key="j"
+          ></span>
+        </div>
+
+        <div class="sign">
+          <div v-for="(item,index) in cinema" :key="index" class="sign-item">{{index+1}}</div>
         </div>
       </div>
+    </div>
+    <!-- 订单显示 -->
+    <div class="indent">
+      <span v-for="(item,index) in choseArr" :key="index">
+        <span v-if="item.x">{{item.x}},{{item.y}}</span>
+      </span>
     </div>
   </div>
 </template>
@@ -28,7 +43,8 @@
 export default {
   data() {
     return {
-      cinema: []
+      cinema: [],
+      choseArr: []
     };
   },
   methods: {
@@ -36,11 +52,32 @@ export default {
     setCinema() {
       if (this.$route.params.price <= 25) {
         this.cinema = this.$store.state.commonScreen;
-        this.$refs.cinema.style.width = '230px'
+        this.$refs.cinema.style.width = "230px";
       } else {
         this.cinema = this.$store.state.imaxScreen;
-        this.$refs.cinema.style.width = '280px'
+        this.$refs.cinema.style.width = "280px";
       }
+    },
+    //点击座位事件
+    chose(x, y, i) {
+      this.cinema[x][y] = 3;
+      if (i == 2) {
+        return;
+      }
+      if (this.choseArr.length == 0) {
+        this.choseArr.push({ x: x + 1, y: y + 1 });
+        return;
+      }
+      for (var i = 0; i < this.choseArr.length; i++) {
+        if (this.choseArr[i].x == x + 1 && this.choseArr[i].y == y + 1) {
+          this.cinema[x][y] = 1;
+          this.choseArr = this.choseArr.filter(function(item) {
+            return !(item.x == x + 1 && item.y == y + 1);
+          });
+          return;
+        }
+      }
+      this.choseArr.push({ x: x + 1, y: y + 1 });
     }
   },
   mounted() {
@@ -51,6 +88,7 @@ export default {
 
 <style lang="scss" scoped>
 .contanier {
+  position: relative;
   width: 100%;
   height: 100%;
   header {
@@ -103,29 +141,52 @@ export default {
     height: 350px;
     margin-top: 5px;
     padding: 20px;
-    background-color: rgb(233, 233, 233);
-    .item{
+    .item {
       margin-left: 50%;
       transform: translateX(-50%);
-      .cinema-item{
-        display: flex;
-
+      position: relative;
+      .sign {
+        position: absolute;
+        width: 10px;
+        height: 100%;
+        left: -20px;
+        top: -4px;
+        .sign-item {
+          width: 100%;
+          height: 13px;
+          margin-top: 5px;
+          font-size: $xs-font;
+          line-height: 10px;
+          text-align: center;
+        }
       }
-      span{
+      .cinema-item {
+        display: flex;
+      }
+      span {
         flex: 1;
         display: inline-block;
         width: 10px;
         height: 13px;
         margin-right: 5px;
         margin-bottom: 5px;
-        &.on{
+        &.on {
           background-color: rgb(162, 192, 162);
         }
-        &.off{
+        &.off {
           background-color: rgb(245, 107, 107);
+        }
+        &.chose{
+          background-color: rgb(128, 155, 214);
         }
       }
     }
+  }
+  .indent {
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    bottom: 50px;
   }
 }
 </style>
