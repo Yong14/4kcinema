@@ -66,6 +66,11 @@ export default new Router({
       component: ()=>import('./views/BuyTickit.vue')
     },
     {
+      path:'/buy',
+      name:'buy',
+      component:()=>import('./views/Buy.vue')
+    },
+    {
       path: '/*',
       redirect: '/'
     }

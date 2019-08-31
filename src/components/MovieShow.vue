@@ -22,7 +22,7 @@
           <div class="icon-3d">3D</div>
           <div class="icon-imax">IMAX</div>
         </div>
-        <div @click="shop(item.id)" :class="['buy',{presll:item.sc=='0'}]">{{item.sc=='0'?'预售':'购买'}}</div>
+        <div @click="shop(item.id,item.sc)" :class="['buy',{presll:item.sc=='0'}]">{{item.sc=='0'?'待售':'购买'}}</div>
       </div>
     </li>
   </ul>
@@ -36,11 +36,18 @@ export default {
   },
   methods: {
     showMovie(id) {
-      this.$store.state.movieId = id;
+      this.$store.commit('changeMovieId',id);
       this.$router.push("/particulars");
     },
-    shop(id){
-      this.$router.push('/cinema/'+id);
+    shop(id,sc){
+      if(sc==0){
+        return;
+        console.log(1);
+      }else{
+        this.$store.commit('changeMovieId',id);
+        this.$router.push('/cinema/'+id);
+      }
+      
     }
   }
 };

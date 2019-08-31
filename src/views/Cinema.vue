@@ -3,7 +3,7 @@
     <particurlarHeader class="particurlarHeader" :data="data"/>
     <div class="cinema-content" ref="cinema">
       <ul>
-        <li @click="goBuy(cinema.id,cinema.nm,cinema.sellPrice)" class="li-item" v-for="cinema in cinemas" :key="cinema.id">
+        <li @click="goBuy(cinema.id,cinema.nm,cinema.sellPrice,cinema.addr)" class="li-item" v-for="cinema in cinemas" :key="cinema.id">
           <div class="movie">
             <div class="name">
               <span class="title">{{cinema.nm}}</span>
@@ -51,8 +51,8 @@ export default {
   },
   methods: {
     //点击跳转购票页面
-    goBuy(id,nm,price){
-      this.$router.push({name:'buytickit',params:{id,nm,price}});
+    goBuy(id,nm,price,addr){
+      this.$router.push({name:'buytickit',params:{id,nm,price,addr}});
     },
     async getData() {
       //获取影院信息
