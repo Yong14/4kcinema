@@ -2,6 +2,7 @@ export default {
     nm: window.localStorage.getItem('nowNm') || '北京',
     id: window.localStorage.getItem('nowId') || 1,
     movieId:0,
+    cinemaId:0,
     isLoging:false,
     loginUser:'',
     commonScreen:[

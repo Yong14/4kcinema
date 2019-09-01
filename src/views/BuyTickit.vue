@@ -126,7 +126,9 @@ export default {
     buy({ price, time }) {
       let nm = this.nm;
       let movie = this.movieList[this.cureent].nm;
-      this.$router.push({ name: "buy", params: { time, price, nm, movie } });
+      let movieId = this.movieList[this.cureent].id;
+      let cinemaId = this.$route.params.id;
+      this.$router.push({ name: "buy", params: { cinemaId, time, price, nm, movie, movieId} });
     },
     //持久化影院及地址
     persistence() {

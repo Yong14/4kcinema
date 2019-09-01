@@ -13,5 +13,8 @@ export default {
       },
       changeMovieId(state,id){
         state.movieId = id;
+      },
+      changeCinemaId(state,id){
+        state.cinemaId = id;
       }
 }

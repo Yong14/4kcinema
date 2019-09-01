@@ -52,6 +52,7 @@ export default {
   methods: {
     //点击跳转购票页面
     goBuy(id,nm,price,addr){
+      this.$store.commit('changeCinemaId',id);
       this.$router.push({name:'buytickit',params:{id,nm,price,addr}});
     },
     async getData() {
